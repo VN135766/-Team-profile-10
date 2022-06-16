@@ -1,0 +1,24 @@
+{
+  "name": "challenge-10-team-profile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VN135766/Challenge-10-Team-profile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VN135766/Challenge-10-Team-profile/issues"
+  },
+  "homepage": "https://github.com/VN135766/Challenge-10-Team-profile#readme",
+  "dependencies": {
+    "jest": "^28.1.1"
+  },
+  "devDependencies": {}
+}
