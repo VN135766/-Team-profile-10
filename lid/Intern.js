@@ -1,3 +1,4 @@
+const Employee = require('./Employee');
 // we do the same thing, extent this constuctor from employee constuctor 
 class Intern extends Employee  {
     constructor (name, email, id, school) {
