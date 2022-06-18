@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/VN135766/Challenge-10-Team-profile#readme",
   "dependencies": {
+    "inquirer": "^8.2.4",
     "jest": "^28.1.1"
-  },
-  "devDependencies": {}
+  }
 }
