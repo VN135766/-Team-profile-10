@@ -12,12 +12,12 @@ const addManager = () => {
         {
             type: 'input',
             name: 'name',
-            message: 'Who is the manager of this team?', 
+            message: 'Who is the management of this team?', 
             validate: nameInput => {
                 if (nameInput) {
                     return true;
                 } else {
-                    console.log ("Please enter a manager's name!");
+                    console.log ("Please enter a manager's name?");
                     return false;
                 }
             }
@@ -25,12 +25,12 @@ const addManager = () => {
         {
             type: 'input',
             name: 'id',
-            message: "Please enter the manager's ID.",
+            message: "Please enter the manager's ID?",
             validate: nameInput => {
                 if (nameInput) {
                     return true;
                 } else {
-                    console.log('Please enter a valid work ID')
+                    console.log('Please enter a valid work ID?')
                 }
             }
         },
@@ -42,19 +42,19 @@ const addManager = () => {
                 if (nameInput ) {
                     return true;
                 } else {
-                    console.log ('Please enter an email!')
+                    console.log ('Please enter an email')
                 }
             }
         },
         {
             type: 'input',
             name: 'officenumber',
-            message: "Please enter the manager's email.",
+            message: "Please enter the manager's office number?.",
             validate: nameInput => {
                 if (nameInput ) {
                     return true;
                 } else {
-                    console.log ('Please enter an email!')
+                    console.log ('Please enter a valid office number')
                 }
             }
         },
