@@ -1,4 +1,3 @@
-
 const generateHTML = require('./src/generateHTML');
 const Manager = require('./lid/Manager');
 const Engineer = require('./lid/Engineer');
@@ -153,7 +152,7 @@ const addEmployee = () => {
     ])
         .then(employeeData => {
             let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
-            let employee; 
+            let employee;
 
             if (role === "Engineer") {
                 employee = new Engineer(name, id, email, github);
@@ -167,11 +166,11 @@ const addEmployee = () => {
 
             teamArray.push(employee);
             if (confirmAddEmployee) {
-        return addEmployee(teamArray);
-    } else {
-        return teamArray;
-    }
-})
+                return addEmployee(teamArray);
+            } else {
+                return teamArray;
+            }
+        })
 };
 const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
@@ -193,5 +192,5 @@ addManager()
     })
     .catch(err => {
         const teamArr = generateHTML(err);
-        writeFile(teamArr); 
+        writeFile(teamArr);
     });
