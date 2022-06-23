@@ -1,5 +1,5 @@
 
-const generatePage = require('./src/page-template');
+const generateHTML = require('./src/generateHTML');
 const Manager = require('./lid/Manager');
 const Engineer = require('./lid/Engineer');
 const Intern = require('./lid/Intern');
@@ -8,7 +8,7 @@ const fs = require('fs');
 const inquirer = require('inquirer');
 const teamArray = [];
 
-const addManager = (team) => {
+const addManager = () => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -71,7 +71,7 @@ const addManager = (team) => {
         })
 };
 
-const addEmployee = (team) => {
+const addEmployee = () => {
 
     return inquirer.prompt([
         {
@@ -153,6 +153,7 @@ const addEmployee = (team) => {
     ])
         .then(employeeData => {
             let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
+            let employee; 
 
             if (role === "Engineer") {
                 employee = new Engineer(name, id, email, github);
@@ -172,7 +173,7 @@ const addEmployee = (team) => {
     }
 })
 };
-writeFile = data => {
+const writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
         if (err) {
             console.log(err);
@@ -184,12 +185,13 @@ writeFile = data => {
 };
 addManager()
     .then(addEmployee)
-    .then(team => {
-        return generatePage(team);
+    .then(teamArray => {
+        return generateHTML(teamArray);
     })
     .then(pageHTML => {
         return writeFile(pageHTML);
     })
     .catch(err => {
-        console.log(err);
+        const teamArr = generateHTML(err);
+        writeFile(teamArr); 
     });

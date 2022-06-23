@@ -8,7 +8,7 @@ class Manager extends Employee {
     }
 
     getTypeOfEmployee () {
-        return "Manager"
+        return "Manager";
     }
 }
 module.exports = Manager;

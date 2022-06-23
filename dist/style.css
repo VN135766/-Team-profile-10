@@ -20,7 +20,7 @@ body {
 .navbar-brand {
     font-size: 50px;
 }
-.card-top{
+.card-header {
     background-color: var(--primary);
 }
 

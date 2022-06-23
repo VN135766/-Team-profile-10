@@ -8,7 +8,7 @@ class Engineer extends Employee {
     }
 
     getTypeOfEmployee () {
-        return "Engineer"
+        return "Engineer";
     }
 }
 module.exports = Engineer;

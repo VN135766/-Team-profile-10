@@ -11,7 +11,7 @@ class Intern extends Employee  {
         return this.school;
     }
     getTypeOfEmployee () {
-        return "Intern"
+        return "Intern";
     }
 }
 module.exports = Intern;
