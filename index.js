@@ -1,14 +1,14 @@
-const Employee = require('./lid/Employee');
+
+const generatePage = require('./src/page-template');
 const Manager = require('./lid/Manager');
 const Engineer = require('./lid/Engineer');
 const Intern = require('./lid/Intern');
 
 const fs = require('fs');
-const generatePage = require("./src/page-template.js")
 const inquirer = require('inquirer');
 const teamArray = [];
 
-const addManager = () => {
+const addManager = (team) => {
     return inquirer.prompt([
         {
             type: 'input',
@@ -71,7 +71,7 @@ const addManager = () => {
         })
 };
 
-const addEmployee = () => {
+const addEmployee = (team) => {
 
     return inquirer.prompt([
         {
@@ -151,30 +151,28 @@ const addEmployee = () => {
             default: false
         },
     ])
-        .then(teamData => {
-            if (teamData.role === "Engineer") {
-                const { name, id, email, github } = teamData;
-                const engineer = new Engineer(name, id, email, github);
+        .then(employeeData => {
+            let { name, id, email, role, github, school, confirmAddEmployee } = employeeData;
 
-                teamArray.push(engineer);
-                console.log(engineer);
+            if (role === "Engineer") {
+                employee = new Engineer(name, id, email, github);
+
+                console.log(employee);
 
             } else {
-                const { name, id, email, school } = teamData;
-                const intern = new Intern(name, id, email, school);
-
-                teamArray.push(intern);
-                console.log(intern);
+                employee = new Intern(name, id, email, school);
 
             }
-            if (teamData.confirmAddEmployee) {
-                return addEmployee(teamArray);
-            } else {
-                return teamArray;
-            }
-        })
+
+            teamArray.push(employee);
+            if (confirmAddEmployee) {
+        return addEmployee(teamArray);
+    } else {
+        return teamArray;
+    }
+})
 };
-const writeFile = data => {
+writeFile = data => {
     fs.writeFile('./dist/index.html', data, err => {
         if (err) {
             console.log(err);
@@ -186,11 +184,11 @@ const writeFile = data => {
 };
 addManager()
     .then(addEmployee)
-    .then(teamArray => {
-        return generatePage(teamArray);
+    .then(team => {
+        return generatePage(team);
     })
-    .then(data => {
-        return writeFile(data);
+    .then(pageHTML => {
+        return writeFile(pageHTML);
     })
     .catch(err => {
         console.log(err);
